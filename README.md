@@ -129,9 +129,6 @@ No tema escuro, os fundos e o texto são redefinidos por variáveis CSS, e o ter
 
 **Marcos Silvari** — estudante de Análise e Desenvolvimento de Sistemas.
 
-- GitHub: [seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [seu-perfil](https://www.linkedin.com/in/seu-perfil)
-
 ---
 
 Feito com café e afeto. ☕
