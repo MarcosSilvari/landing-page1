@@ -2,6 +2,10 @@
 
 Landing page de uma cafeteria fictícia, criada como projeto de estudo de front-end. O layout foi construído a partir de um protótipo no Figma, usando apenas **HTML, CSS e JavaScript puro**, sem frameworks nem bibliotecas.
 
+**LINK SITE:**
+
+link: https://cafeteria-amber-two.vercel.app/
+
 > **Projeto demonstrativo.** A Aurora é uma marca fictícia: endereço, horários, cardápio, depoimentos e imagens são ilustrativos.
 
 <img width="1919" height="928" alt="11" src="https://github.com/user-attachments/assets/e16c5a46-87dd-4ae2-bbac-ce73941b0eff" />
