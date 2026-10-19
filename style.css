@@ -1,0 +1,985 @@
+/* ---------- 1. VARIÁVEIS ---------- */
+:root {
+    --creme: #F7F2E9;
+    --creme-claro: #FFFCF6;
+    --bege: #EDE3D5;
+    --marrom: #34251F;
+    --terracota: #A84F36;
+    --terracota-escuro: #8F4129;
+    --linha: #D9CDBE;
+
+    --fundo: var(--creme);
+    --fundo-card: var(--creme-claro);
+    --fundo-destaque: var(--bege);
+    --fundo-escuro: var(--marrom);
+    --texto: var(--marrom);
+    --texto-suave: #6F5F55;
+    --acento: var(--terracota);
+
+    --fonte-titulo: "Lora", Georgia, serif;
+    --fonte-texto: "DM Sans", system-ui, sans-serif;
+
+    --largura: 1280px;
+    
+    --margem-x: max(24px, calc((100% - var(--largura)) / 2));
+    --espaco-secao: clamp(64px, 9vw, 128px);
+}
+
+[data-tema="escuro"] {
+    color-scheme: dark;
+    --fundo: #1B1411;
+    --fundo-card: #241A16;
+    --fundo-destaque: #2B201B;
+    --fundo-escuro: #120C0A;
+    --texto: #F2EAE0;
+    --texto-suave: #BFB0A4;
+    --linha: #4A3B33;
+    --acento: #D98466;
+}
+
+[data-tema="escuro"] img {
+    filter: brightness(0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px; 
+}
+
+body {
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--texto);
+    background: var(--fundo);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--marrom);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--terracota);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--terracota);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--linha);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--texto);
+    text-wrap: balance;
+}
+
+h2 {
+    font-size: clamp(2.2rem, 4.4vw, 3.5rem);
+    letter-spacing: -0.01em;
+}
+
+:focus-visible {
+    outline: 2px solid var(--terracota);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+/* ---------- 3. PEÇAS REUTILIZÁVEIS ---------- */
+.eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--acento);
+}
+
+.aviso {
+    font-size: 0.8125rem;
+    color: var(--texto-suave);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 28px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-principal {
+    background: var(--terracota);
+    color: var(--creme-claro);
+}
+
+.btn-principal::after {
+    content: "↗";
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+.btn-principal:hover {
+    background: var(--terracota-escuro);
+}
+
+.btn-contorno {
+    background: transparent;
+    border-color: var(--linha);
+    color: var(--texto);
+}
+
+.btn-contorno:hover {
+    border-color: var(--texto);
+}
+
+/* logo (usada no header e no rodapé) */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--acento);
+}
+
+.logo strong {
+    display: block;
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1;
+    text-transform: lowercase;
+    color: inherit;
+}
+
+.logo span {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+}
+
+/* ---------- 4. HEADER ---------- */
+.topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    column-gap: 12px;
+    padding: 16px var(--margem-x);
+    background: var(--fundo);
+    border-bottom: 1px solid var(--linha);
+}
+
+.topo .logo svg {
+    width: 48px;
+    height: 48px;
+}
+
+.topo-logo {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem;
+    line-height: 1;
+    text-transform: lowercase;
+    color: var(--texto);
+}
+
+.topo-logo::after {
+    content: "CAFÉ & AFETO";
+    display: block;
+    margin-top: 6px;
+    font-family: var(--fonte-texto);
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.topo nav {
+    justify-self: center;
+}
+
+.menu {
+    display: flex;
+    gap: clamp(24px, 3.5vw, 48px);
+}
+
+.menu a {
+    position: relative;
+    padding: 6px 0;
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--terracota);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s;
+}
+
+.menu a:hover::after {
+    transform: scaleX(1);
+}
+
+.topo .btn {
+    padding: 14px 22px;
+    font-size: 0.9375rem;
+}
+
+/* ---------- 5. HERO ---------- */
+.inicio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(40px, 6vw, 96px);
+    padding: clamp(40px, 6vw, 72px) var(--margem-x) clamp(48px, 7vw, 96px);
+}
+
+.inicio-texto .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.inicio-texto .eyebrow::before {
+    content: "";
+    width: 40px;
+    height: 1px;
+    background: var(--terracota);
+}
+
+.inicio h1 {
+    margin-bottom: 32px;
+    font-size: clamp(2.6rem, 5.2vw, 4.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+}
+
+.inicio-descricao {
+    max-width: 30em;
+    margin-bottom: 40px;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--texto-suave);
+}
+
+.inicio-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.inicio-imagem {
+    width: 100%;
+    height: clamp(380px, 50vw, 640px);
+    object-fit: cover;
+    border-radius: clamp(80px, 14vw, 220px) 0 0 0; 
+    transition: transform 0.3s;
+}
+
+.inicio-imagem:hover{
+    transform: scale(1.06);
+}
+
+.faixa {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px 32px;
+    padding: 24px var(--margem-x);
+    border-block: 1px solid var(--linha);
+}
+
+.faixa li::before {
+    content: "✱";
+    margin-right: 16px;
+    color: var(--terracota);
+}
+
+/* ---------- 6. NOSSA HISTÓRIA ---------- */
+.sobre {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+    column-gap: clamp(40px, 7vw, 120px);
+    padding: var(--espaco-secao) var(--margem-x);
+}
+
+.sobre > * {
+    grid-column: 2;
+}
+
+.sobre h2 {
+    margin: 16px 0 28px;
+}
+
+.sobre > p:not([class]) {
+    margin-bottom: 20px;
+    font-size: 1.0625rem;
+    line-height: 1.85;
+    color: var(--texto-suave);
+}
+
+.sobre-frase {
+    margin-top: 12px;
+    padding-top: 32px;
+    border-top: 1px solid var(--linha);
+    font-family: var(--fonte-titulo);
+    font-size: clamp(1.6rem, 2.6vw, 2rem);
+    font-style: italic;
+    color: var(--acento);
+}
+
+.sobre-assinatura {
+    margin-top: 8px;
+    font-size: 0.9375rem;
+    color: var(--texto-suave);
+}
+
+.sobre > .sobre-figura {
+    grid-column: 1;
+    grid-row: 1 / span 6;
+    align-self: center;
+}
+
+.sobre-figura img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.sobre-figura figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+}
+
+.sobre-figura figcaption span {
+    color: var(--acento);
+    text-transform: uppercase;
+}
+
+/* ---------- 7. CARDÁPIO ---------- */
+.cardapio {
+    padding: var(--espaco-secao) var(--margem-x);
+    background: var(--fundo-card);
+}
+
+.cardapio h2 {
+    margin: 16px 0 56px;
+}
+
+.cardapio-lista {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.item-cardapio {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-content: start;
+    align-items: baseline;
+    column-gap: 16px;
+    background-color: #57392c2c;
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.item-cardapio:hover{
+    transform: scale(1.06);
+}
+
+.item-cardapio img {
+    grid-column: 1 / -1;
+    width: 100%;
+    aspect-ratio: 7 / 6;
+    margin-bottom: 24px;
+    object-fit: cover;
+}
+
+.item-tag {
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--acento);
+}
+
+.item-cardapio h3 {
+    font-size: 1.75rem;
+}
+
+.item-preco {
+    font-weight: 500;
+    color: var(--acento);
+    white-space: nowrap;
+}
+
+.item-descricao {
+    grid-column: 1 / -1;
+    margin-top: 16px;
+    line-height: 1.7;
+    color: var(--texto-suave);
+}
+
+/* ---------- 8. NOSSO JEITO DE FAZER (fundo escuro) ---------- */
+.infos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 64px;
+    align-items: start;
+    padding: var(--espaco-secao) var(--margem-x);
+    background: var(--fundo-escuro);
+    color: var(--creme);
+}
+
+.infos .eyebrow {
+    grid-column: 1;
+    grid-row: 1;
+    padding-top: 36px;
+    color: var(--creme);
+}
+
+.infos h2 {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 16px;
+    color: var(--creme-claro);
+}
+
+.infos-lista {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.info h3 {
+    margin-bottom: 16px;
+    font-size: 1.75rem;
+    color: var(--creme-claro);
+}
+
+.info p {
+    line-height: 1.8;
+    color: rgba(247, 242, 233, 0.78);
+}
+
+/* ---------- 9. O ESPAÇO ---------- */
+.espaco {
+    padding: var(--espaco-secao) var(--margem-x);
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 30px;
+}
+
+.galeria img {
+    width: 100%;
+    height: clamp(260px, 34vw, 440px);
+    object-fit: cover;
+}
+
+.comodidades {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px 32px;
+    margin-top: 36px;
+    color: var(--texto-suave);
+}
+
+.comodidades li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone {
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--acento);
+}
+
+/* ---------- 10. DEPOIMENTOS ---------- */
+.depoimentos {
+    padding: var(--espaco-secao) var(--margem-x);
+    background: var(--fundo-destaque);
+    text-align: center;
+}
+
+.depoimentos h2 {
+    margin: 16px 0 56px;
+}
+
+.depoimentos-lista {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: left;
+}
+
+.depoimento {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px;
+    border-radius: 20px;
+    background: var(--fundo-card);
+}
+
+.depoimento:hover{
+    transition: 0.3s;
+    transform: scale(1.06);
+}
+
+.estrelas {
+    font-size: 1.25rem;
+    letter-spacing: 0.1em;
+    color: var(--acento);
+}
+
+.depoimento blockquote {
+    flex: 1;
+    font-family: var(--fonte-titulo);
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.autor {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--fundo-destaque);
+    font-size: 0.875rem;
+    color: var(--acento);
+}
+
+.autor div {
+    display: flex;
+    flex-direction: column;
+}
+
+.autor strong {
+    font-weight: 500;
+}
+
+.autor div span {
+    font-size: 0.875rem;
+    color: var(--texto-suave);
+}
+
+.depoimentos .aviso {
+    margin-top: 32px;
+}
+
+/* ---------- 11. VISITE A AURORA ---------- */
+.visita {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(40px, 6vw, 96px);
+    padding: var(--espaco-secao) var(--margem-x);
+}
+
+.visita h2 {
+    margin: 16px 0 40px;
+}
+
+.visita img {
+    width: 100%;
+    height: clamp(320px, 45vw, 660px);
+    object-fit: cover;
+}
+
+.bloco {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.bloco div {
+    flex: 1;
+}
+
+.bloco .icone {
+    line-height: 1.4;
+}
+
+.bloco h3 {
+    margin-bottom: 8px;
+    font-family: var(--fonte-texto);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.bloco p {
+    line-height: 1.7;
+    color: var(--texto-suave);
+}
+
+.horarios li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 6px 0;
+    color: var(--texto-suave);
+}
+
+.horarios li span:last-child {
+    color: var(--texto);
+}
+
+.visita hr {
+    margin: 32px 0 28px;
+}
+
+.frase {
+    margin-bottom: 12px;
+    font-family: var(--fonte-titulo);
+    font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+    font-style: italic;
+    color: var(--acento);
+}
+
+/* ---------- 12. CHAMADA FINAL (terracota) ---------- */
+.cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: clamp(56px, 8vw, 96px) var(--margem-x);
+    background: var(--terracota);
+    color: var(--creme);
+}
+
+.cta .eyebrow {
+    color: var(--creme);
+}
+
+.cta h2 {
+    margin: 20px 0 24px;
+    color: var(--creme-claro);
+}
+
+.cta-sub {
+    font-size: 1.25rem;
+}
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 32px;
+    border-radius: 4px;
+    background: var(--creme);
+    font-weight: 500;
+    color: var(--marrom);
+    white-space: nowrap;
+    transition: background-color 0.2s;
+}
+
+.botao:hover {
+    background: var(--creme-claro);
+}
+
+.botao span {
+    font-size: 1.1em;
+}
+
+/* ---------- 13. RODAPÉ ---------- */
+.rodape {
+    padding: clamp(56px, 7vw, 80px) var(--margem-x) 32px;
+    background: var(--fundo-escuro);
+    color: var(--creme);
+}
+
+.rodape-topo {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 48px;
+}
+
+.rodape .logo {
+    color: var(--creme);
+}
+
+.marca p {
+    max-width: 26em;
+    margin-top: 24px;
+    line-height: 1.8;
+    color: rgba(247, 242, 233, 0.8);
+}
+
+.coluna {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.coluna h4 {
+    margin-bottom: 8px;
+    font-family: var(--fonte-texto);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--creme);
+}
+
+.coluna a {
+    color: rgba(247, 242, 233, 0.85);
+    transition: color 0.2s;
+}
+
+.coluna a:hover {
+    color: #fff;
+}
+
+.coluna small {
+    font-size: 0.8125rem;
+    color: rgba(247, 242, 233, 0.6);
+}
+
+.rodape hr {
+    margin: 56px 0 28px;
+    border-top-color: rgba(247, 242, 233, 0.2);
+}
+
+.rodape-base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 0.875rem;
+    color: rgba(247, 242, 233, 0.8);
+}
+
+.demo {
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+}
+
+.rodape .aviso {
+    margin-top: 16px;
+    color: rgba(247, 242, 233, 0.65);
+}
+
+/* ---------- 14. BOTÃO DE TEMA ---------- */
+.topo,
+.cardapio,
+.depoimentos,
+.depoimento,
+.infos,
+.rodape {
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.botao-tema {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--linha);
+    border-radius: 50%;
+    background: var(--fundo-card);
+    color: var(--texto);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.botao-tema:hover {
+    transform: scale(1.08);
+}
+
+/* ---------- 15. RESPONSIVO ---------- */
+@media (max-width: 1100px) {
+    .cardapio-lista {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 28px;
+    }
+
+    .infos-lista {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .topo {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .topo nav {
+        display: none;
+    }
+
+    .inicio,
+    .visita,
+    .galeria {
+        grid-template-columns: 1fr;
+    }
+
+    .inicio-imagem {
+        border-top-left-radius: 120px;
+    }
+
+    .sobre {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre > *,
+    .sobre > .sobre-figura {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .sobre > .sobre-figura {
+        margin-bottom: 40px;
+    }
+
+    .infos {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .infos .eyebrow,
+    .infos h2,
+    .infos-lista {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .infos .eyebrow {
+        padding-top: 0;
+    }
+
+    .infos-lista {
+        margin-top: 40px;
+    }
+
+    .depoimentos-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .rodape-topo {
+        grid-template-columns: 1fr;
+    }
+
+    .comodidades {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .topo .btn {
+        padding: 12px 16px;
+        font-size: 0.875rem;
+    }
+
+    .topo-logo {
+        font-size: 1.6rem;
+    }
+
+    .cardapio-lista {
+        grid-template-columns: 1fr;
+    }
+
+    .depoimento {
+        padding: 28px;
+    }
+
+    .botao,
+    .inicio-botoes .btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+

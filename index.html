@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Cafeteria</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+
+<body>
+    <button type="button" id="botao-tema" class="botao-tema" aria-label="Mudar para o tema escuro">🌙</button>
+    <header class="topo">
+        <div class="logo">
+            <svg width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" aria-hidden="true">
+                <path d="M14 36a13 13 0 0 1 26 0" />
+                <path d="M4 36h46M16 44h22" />
+                <path d="M27 6v6M10 15l4 4M44 15l-4 4M3 27h5M46 27h5" />
+            </svg>
+        </div>
+        <a href="#" class="topo-logo">AURORA</a>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="#historia">Nossa história</a></li>
+                <li><a href="#espaco">O espaço</a></li>
+                <li><a href="#visita">Visite a Aurora</a></li>
+            </ul>
+        </nav>
+
+        <a href="#visita" class="btn btn-principal">Venha tomar um café</a>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="inicio">
+            <div class="inicio-texto">
+                <p class="eyebrow">Café especial. Tempo de qualidade.</p>
+                <h1>Todo dia merece um bom começo.</h1>
+                <p class="inicio-descricao">Cafés de origem, receitas feitas à mão e um cantinho
+                    para desacelerar. Na Aurora, o melhor do dia começa com uma pausa.
+                </p>
+
+                <div class="inicio-botoes">
+                    <a href="#cardapio" class="btn btn-principal">Explore o cardápio</a>
+                    <a href="#historia" class="btn btn-contorno">Conheça a Aurora</a>
+                </div>
+            </div>
+
+            <img class="inicio-imagem" src="img/hero.jpg" alt="Xícara de café sobre uma mesa na cafeteria Aurora">
+        </section>
+
+        <!-- SOBRE -->
+        <section class="sobre" id="historia">
+            <figure class="sobre-figura">
+                <img src="img/sobre-barista.jpg" alt="Barista passando café em um coador, com a chaleira de bico fino">
+                <figcaption>O cuidado está em cada etapa. <span>Desde 2022</span></figcaption>
+            </figure>
+            <p class="eyebrow">Prazer, somos a Aurora</p>
+            <h2>A gente acredita nos pequenos rituais.</h2>
+            <p>A Aurora nasceu de uma ideia simples:
+                criar um lugar onde uma boa xícara de café pudesse transformar o ritmo do dia.
+                Um encontro entre o sabor, o cuidado e a vontade de ficar mais um pouco.
+            </p>
+            <p>Por aqui, escolhemos grãos de pequenos produtores brasileiros e
+                preparamos nossas receitas em pequenas fornadas.
+                Tudo para que você se sinta em casa, mesmo fora dela.
+            </p>
+            <blockquote class="sobre-frase">“Café bom aproxima.”</blockquote>
+            <p class="sobre-assinatura">É assim que a nossa história começa, todos os dias.</p>
+        </section>
+
+        <!-- CARDÁPIO -->
+        <section class="cardapio" id="cardapio">
+            <p class="eyebrow">Feito aqui, pra você.</p>
+            <h2>Sabores que abraçam.</h2>
+
+            <div class="cardapio-lista">
+                <article class="item-cardapio">
+                    <img src="img/cardapio-coado.jpg" alt="">
+                    <p class="item-tag">Cafés de origem</p>
+                    <h3>Coado da casa</h3>
+                    <p class="item-preco">R$ 12,00</p>
+                    <p class="item-descricao">Grão da estação, preparo no V60 e notas que surpreendem. 200 ml.</p>
+                </article>
+
+                <article class="item-cardapio">
+                    <img src="img/cardapio-cappuccino.jpg" alt="">
+                    <p class="item-tag">O queridinho da casa</p>
+                    <h3>Cappuccino Aurora</h3>
+                    <p class="item-preco">R$ 16,00</p>
+                    <p class="item-descricao">Espresso duplo, leite cremoso e um toque delicado de cacau. 180 ml.</p>
+                </article>
+
+                <article class="item-cardapio">
+                    <img src="img/cardapio-pao-de-queijo.jpg" alt="">
+                    <p class="item-tag">Saindo do forno</p>
+                    <h3>Pão de queijo</h3>
+                    <p class="item-preco">R$ 9,00</p>
+                    <p class="item-descricao">Casquinha dourada, miolo macio e queijo de verdade. 3 unidades.</p>
+                </article>
+
+                <article class="item-cardapio">
+                    <img src="img/cardapio-bolo-de-laranja.jpg" alt="">
+                    <p class="item-tag">Receita de afeto</p>
+                    <h3>Bolo de laranja</h3>
+                    <p class="item-preco">R$ 16,00</p>
+                    <p class="item-descricao">Fatia generosa, massa fofinha e calda de laranja feita na hora.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- NOSSO JEITO DE FAZER -->
+        <section class="infos">
+            <p class="eyebrow">Nosso jeito de fazer</p>
+            <h2>O cuidado muda tudo.</h2>
+
+            <div class="infos-lista">
+                <div class="info">
+                    <h3>Origem que importa</h3>
+                    <p>Grãos de pequenos produtores brasileiros,
+                        escolhidos com cuidado e torrados para revelar o melhor de cada safra.</p>
+                </div>
+                <div class="info">
+                    <h3>Feito de verdade</h3>
+                    <p>Receitas simples, bons ingredientes e preparo artesanal. O frescor de pequenas fornadas ao
+                        longo do dia.</p>
+                </div>
+                <div class="info">
+                    <h3>Acolher é a essência</h3>
+                    <p>Atendimento próximo, uma mesa para chamar de sua e o convite para aproveitar as coisas sem
+                        pressa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- O ESPAÇO -->
+        <section class="espaco" id="espaco">
+            <div class="galeria">
+                <img src="img/cafeteria-salao.jpg"
+                    alt="Salão da cafeteria com mesas de madeira, plantas e clientes tomando café">
+                <img src="img/cafe-livro.jpg"
+                    alt="Café com latte art ao lado de um livro aberto e flores secas em uma mesa redonda">
+            </div>
+
+            <ul class="comodidades">
+                <li><span class="icone">📶</span> Wi-Fi para ficar à vontade</li>
+                <li><span class="icone">🔌</span> Tomadas por perto</li>
+                <li><span class="icone">🐾</span> Seu pet é bem-vindo</li>
+                <li><span class="icone">☀️</span> Luz natural e aconchego</li>
+            </ul>
+        </section>
+
+        <!-- DEPOIMENTOS -->
+        <section class="depoimentos">
+            <p class="eyebrow">Quem chega, se sente em casa</p>
+            <h2>O carinho também vem de volta.</h2>
+
+            <div class="depoimentos-lista">
+                <article class="depoimento">
+                    <div class="estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <blockquote>
+                        “O coado é uma delícia, mas o que me faz voltar é a sensação de estar em casa. Meu respiro no
+                        meio da semana.”
+                    </blockquote>
+                    <footer class="autor">
+                        <span class="avatar">MC</span>
+                        <div>
+                            <strong>Marina Costa</strong>
+                            <span>Uma pausa entre compromissos</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="depoimento">
+                    <div class="estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <blockquote>
+                        “Cappuccino cremoso, bolo ainda morninho e uma conversa boa. É o tipo de lugar que melhora
+                        qualquer manhã.”
+                    </blockquote>
+                    <footer class="autor">
+                        <span class="avatar">RL</span>
+                        <div>
+                            <strong>Rafael Lima</strong>
+                            <span>Fã do café da manhã sem pressa</span>
+                        </div>
+                    </footer>
+                </article>
+
+                <article class="depoimento">
+                    <div class="estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <blockquote>
+                        “Fui para tomar um café e acabei ficando a tarde inteira com um livro. A Aurora tem esse efeito
+                        na gente.”
+                    </blockquote>
+                    <footer class="autor">
+                        <span class="avatar">BA</span>
+                        <div>
+                            <strong>Beatriz Alves</strong>
+                            <span>Sempre acompanhada de um livro</span>
+                        </div>
+                    </footer>
+                </article>
+            </div>
+
+            <p class="aviso">Depoimentos e personagens fictícios criados para este projeto demonstrativo.</p>
+        </section>
+
+        <!-- VISITE -->
+        <section class="visita" id="visita">
+            <div class="visita-info">
+                <p class="eyebrow">Te esperamos por aqui</p>
+                <h2>O café está pronto.<br>Só falta você.</h2>
+
+                <div class="bloco">
+                    <span class="icone">📍</span>
+                    <div>
+                        <h3>Um cantinho na Vila Aurora</h3>
+                        <p>Rua do Amanhecer, 128 • Vila Aurora</p>
+                        <p>São Paulo – SP • Endereço fictício</p>
+                    </div>
+                </div>
+
+                <div class="bloco">
+                    <span class="icone">🕐</span>
+                    <div>
+                        <h3>A hora da sua pausa</h3>
+                        <ul class="horarios">
+                            <li><span>Segunda a sexta</span> <span>8h às 19h</span></li>
+                            <li><span>Sábado</span> <span>9h às 19h</span></li>
+                            <li><span>Domingo e feriados</span> <span>9h às 15h</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <hr>
+
+                <p class="frase">Não precisa de ocasião. Nem de pressa.</p>
+                <p class="aviso">Localização e horários ilustrativos. A Aurora não é uma loja real.</p>
+            </div>
+
+            <img src="img/fachada.jpg"
+                alt="Fachada da cafeteria Aurora com toldo terracota, mesinha na calçada e vasos de plantas">
+        </section>
+
+        <!-- CHAMADA FINAL -->
+        <section class="cta">
+            <div class="cta-texto">
+                <p class="eyebrow">Um café. Mil possibilidades.</p>
+                <h2>A sua próxima pausa<br>já tem lugar.</h2>
+                <p class="cta-sub">Venha pelo café. Fique pelo aconchego. A Aurora espera por você.</p>
+            </div>
+            <a href="#visita" class="botao">Venha para a Aurora <span>↗</span></a>
+        </section>
+    </main>
+
+    <!-- RODAPÉ (fora do main) -->
+    <footer class="rodape">
+        <div class="rodape-topo">
+            <div class="marca">
+                <div class="logo">
+                    <svg width="54" height="54" viewBox="0 0 54 54" fill="none" stroke="currentColor" stroke-width="1.6"
+                        stroke-linecap="round" aria-hidden="true">
+                        <path d="M14 36a13 13 0 0 1 26 0" />
+                        <path d="M4 36h46M16 44h22" />
+                        <path d="M27 6v6M10 15l4 4M44 15l-4 4M3 27h5M46 27h5" />
+                    </svg>
+                    <div>
+                        <strong>aurora</strong>
+                        <span>CAFÉ &amp; AFETO</span>
+                    </div>
+                </div>
+                <p>Um bom café, um encontro leve e um pouco mais de tempo para o que importa.</p>
+            </div>
+
+            <nav class="coluna">
+                <h4>Explore a Aurora</h4>
+                <a href="#historia">Nossa história</a>
+                <a href="#cardapio">Cardápio</a>
+                <a href="#espaco">O espaço</a>
+                <a href="#visita">Localização e horários</a>
+            </nav>
+
+            <div class="coluna">
+                <h4>Vamos conversar?</h4>
+                <a href="mailto:aurora@example.com">aurora@example.com</a>
+                <a href="#" class="insta">📷 Nosso dia a dia no Instagram</a>
+                <small>Canais de contato demonstrativos.</small>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="rodape-base">
+            <p>© 2026 Aurora Café • Feito de café e afeto.</p>
+            <p class="demo">PROJETO DEMONSTRATIVO</p>
+        </div>
+        <p class="aviso">Página de exemplo para estudos de front-end. A Aurora Café é uma marca fictícia; imagens,
+            endereço, horários, cardápio e depoimentos são ilustrativos.</p>
+    </footer>
+</body>
+
+</html>
